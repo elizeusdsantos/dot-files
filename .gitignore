@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Vim swap files
+*.swp
+*.swo
+*~
+.*.sw[a-z]
+
+# Neovim
+*.un~
+Session.vim
+
+# Zsh
+.zsh_history
+.zcompdump*
+
+# Claude Code user-specific settings
+.claude/settings.local.json
+
+# Editor directories
+.vscode/
+.idea/
+
+# Temporary files
+*.bak
+*.tmp
+*.log

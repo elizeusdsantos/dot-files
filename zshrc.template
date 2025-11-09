@@ -1,0 +1,59 @@
+#
+# .zshrc - Zsh configuration file
+#
+# This file should be symlinked or copied to ~/.zshrc
+#
+
+#
+# Prezto
+#
+# Source Prezto for Zsh configuration framework
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+#
+# Zplug
+#
+# Initialize zplug plugin manager
+if [[ -d ~/.zplug ]]; then
+  source ~/.zplug/init.zsh
+
+  # Load plugin configuration
+  if [[ -f ~/code/dot-files/zplug/plugins.zsh ]]; then
+    source ~/code/dot-files/zplug/plugins.zsh
+  fi
+
+  # Install plugins if there are plugins that have not been installed
+  if ! zplug check --verbose; then
+    printf "Install zplug plugins? [y/N]: "
+    if read -q; then
+      echo; zplug install
+    fi
+  fi
+
+  # Load plugins
+  zplug load
+fi
+
+#
+# User Configuration
+#
+# Add your custom configuration below this line
+# Examples:
+# - Export environment variables
+# - Define custom aliases
+# - Source additional configuration files
+# - Add custom functions
+
+# Example: Custom aliases
+# alias ll='ls -lah'
+# alias gs='git status'
+# alias gp='git pull'
+
+# Example: Environment variables
+# export EDITOR='nvim'
+# export VISUAL='nvim'
+
+# Example: Add local bin to PATH
+# export PATH="$HOME/.local/bin:$PATH"

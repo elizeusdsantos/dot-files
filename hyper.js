@@ -47,11 +47,11 @@ module.exports = {
         workingDirectory: '',
         // if you're using a Linux setup which show native menus, set to false
         // default: `true` on Linux, `true` on Windows, ignored on macOS
-        showHamburgerMenu: '',
+        showHamburgerMenu: true,
         // set to `false` (without backticks and without quotes) if you want to hide the minimize, maximize and close buttons
         // additionally, set to `'left'` if you want them on the left, like in Ubuntu
         // default: `true` (without backticks and without quotes) on Windows and Linux, ignored on macOS
-        showWindowControls: '',
+        showWindowControls: true,
         // custom padding (CSS format, i.e.: `top right bottom left`)
         padding: '12px 14px',
         // the full list. if you're going to provide the full color palette,
@@ -125,7 +125,7 @@ module.exports = {
         // todo: does not pick up config changes automatically, need to restart terminal :/
         webLinksActivationKey: '',
         // if `false` (without backticks and without quotes), Hyper will use ligatures provided by some fonts
-        disableLigatures: true,
+        disableLigatures: false,
         // set to true to disable auto updates
         disableAutoUpdates: false,
         // set to true to enable screen reading apps (like NVDA) to read the contents of the terminal
