@@ -85,7 +85,7 @@ This document outlines the "jobs" this dot-files repository is designed to accom
 
 **Success criteria:**
 - Custom color scheme with magenta accents
-- FiraCode Nerd Font with programming ligatures
+- Victor Mono font with programming ligatures
 - Dark mode across all tools
 - Consistent theming (Hyper terminal + Cloud prompt)
 

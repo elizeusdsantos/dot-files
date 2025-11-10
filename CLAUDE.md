@@ -61,7 +61,7 @@ Current plugins:
 - **Completion**: bash-like tab completion (`wildmode=longest,list`)
 
 ### Hyper Terminal (hyper.js)
-- **Font**: FiraCode Nerd Font (line 16)
+- **Font**: Victor Mono (line 16)
 - **Theme**: hyper-hypest with dark mode enabled
 - **Colors**: Magenta accents (cursor: `rgba(248,28,229,0.8)`, selection: `rgba(248,28,229,0.3)`)
 - Cursor shape: UNDERLINE, non-blinking
@@ -124,5 +124,5 @@ This design allows:
 **Optional:**
 - Neovim
 - Hyper terminal
-- FiraCode Nerd Font
+- Victor Mono font
 - Zplug (auto-installed by `install.sh`)
