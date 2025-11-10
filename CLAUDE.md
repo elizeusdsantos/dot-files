@@ -30,9 +30,11 @@ zplug install
 If modifying the installer or testing specific configurations:
 ```bash
 ln -sf ~/code/dot-files/zpreztorc ~/.zpreztorc
+ln -sf ~/code/dot-files/gitconfig ~/.gitconfig
 ln -sf ~/code/dot-files/hyper.js ~/.hyper.js
 ln -sf ~/code/dot-files/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ~/code/dot-files/zplug/plugins.zsh ~/.zplug/config/plugins.zsh
+ln -sf ~/code/dot-files/XCompose ~/.XCompose
 ```
 
 ## Key Configuration Details
@@ -66,6 +68,11 @@ Current plugins:
 - **Colors**: Magenta accents (cursor: `rgba(248,28,229,0.8)`, selection: `rgba(248,28,229,0.3)`)
 - Cursor shape: UNDERLINE, non-blinking
 - Font size: 12px
+
+### Git Configuration (gitconfig)
+- **User info**: Name and email configured for commits
+- **Editor**: Neovim (nvim)
+- **Default branch**: main (for new repositories)
 
 ## Important Implementation Notes
 
@@ -120,9 +127,10 @@ This design allows:
 **Required:**
 - Zsh
 - Prezto (installed at `~/.zprezto`)
+- Git
 
 **Optional:**
-- Neovim
+- Neovim (configured as git editor)
 - Hyper terminal
 - Victor Mono font
 - Zplug (auto-installed by `install.sh`)

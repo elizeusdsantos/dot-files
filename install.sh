@@ -79,6 +79,9 @@ echo -e "${BLUE}Installing configuration files...${NC}"
 # Zsh configuration
 create_symlink "$DOTFILES_DIR/zpreztorc" "$HOME/.zpreztorc"
 
+# Git configuration
+create_symlink "$DOTFILES_DIR/gitconfig" "$HOME/.gitconfig"
+
 # Hyper terminal configuration
 if command -v hyper &> /dev/null; then
     create_symlink "$DOTFILES_DIR/hyper.js" "$HOME/.hyper.js"
@@ -124,7 +127,7 @@ echo -e "  2. ${BLUE}Restart your terminal or run: source ~/.zshrc${NC}"
 echo -e "  3. ${BLUE}Install zplug plugins: zplug install${NC}"
 echo ""
 echo -e "Optional installations:"
-echo -e "  • FiraCode Nerd Font: https://www.nerdfonts.com/font-downloads"
+echo -e "  • Victor Mono Font: https://rubjo.github.io/victor-mono/"
 echo -e "  • Hyper Terminal: https://hyper.is/"
 echo ""
 echo -e "Configuration files have been symlinked. Any changes you make in"

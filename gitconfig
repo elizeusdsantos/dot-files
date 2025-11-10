@@ -1,0 +1,9 @@
+[user]
+	email = github.com.trousers553@passinbox.com
+	name = Elizeu S
+
+[core]
+	editor = nvim
+
+[init]
+	defaultBranch = main

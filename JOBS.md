@@ -138,9 +138,10 @@ The repository has evolved to address:
 4. **Added:** Hyper terminal configuration for consistent UI
 5. **Added:** XCompose configuration for Portuguese language support (cedilla)
 6. **Added:** Automated installation script for ease of use
+7. **Added:** Git configuration with editor and default branch settings
 
 Future jobs might include:
-- SSH/Git configuration management
+- SSH configuration management
 - Development tool version management (Node, Python, etc.)
 - Custom scripts and utilities
 - Additional language support configurations
