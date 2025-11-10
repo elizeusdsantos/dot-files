@@ -30,9 +30,10 @@ This document outlines the "jobs" this dot-files repository is designed to accom
 **So that** I can write naturally without character input issues
 
 **Success criteria:**
-- `fix-cedilla.sh` script configures system-wide cedilla support
-- Works across X11, Wayland, GTK, Qt applications
+- XCompose file provides user-level cedilla support
+- Works across X11 applications
 - Configuration persists across sessions
+- No sudo/system modifications required
 
 ### 4. Maintain a Personalized, Efficient Terminal Workflow
 **When** working in the terminal daily
@@ -135,7 +136,7 @@ The repository has evolved to address:
 2. **Added:** Prezto framework for richer features
 3. **Added:** Zplug for modern plugin management
 4. **Added:** Hyper terminal configuration for consistent UI
-5. **Added:** Cedilla fix for Portuguese language support
+5. **Added:** XCompose configuration for Portuguese language support (cedilla)
 6. **Added:** Automated installation script for ease of use
 
 Future jobs might include:

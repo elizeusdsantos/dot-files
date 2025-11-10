@@ -90,15 +90,16 @@ zstyle ':prezto:module:prompt' theme 'cloud' '>' '#FFA500' 'blue'
 ```
 Format: `theme-name symbol user-color root-color`
 
-## Special Scripts
+## Special Configurations
 
-### fix-cedilla.sh
-Modern cedilla fix script for Linux (2025 version) that configures cedilla character input across multiple systems:
-- Requires sudo to run
-- Modifies system files in `/usr/share/X11`, `/etc/environment`, `/etc/xdg`, `/etc/profile.d`
-- Supports X11, Wayland, GTK2/3/4, Qt/Plasma, and IBus
-- Creates backups with `.bak` extension before modifying files
-- Must log out and log back in (or `source /etc/environment`) for changes to take effect
+### XCompose (Cedilla Support)
+The repository includes an XCompose file for proper cedilla character input (ç/Ç) on Linux:
+- User-level configuration (no sudo required)
+- Symlinked to `~/.XCompose` by the install script
+- Includes default US compose sequences
+- Overrides `<dead_acute> + c/C` to produce ç/Ç instead of ć/Ć
+- Works across X11 applications automatically
+- No logout required - takes effect in new applications after symlink creation
 
 ## Architecture
 

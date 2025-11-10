@@ -44,6 +44,12 @@ This repository contains configurations for:
 - **zsh-autosuggestions**: Fish-like command suggestions
 - **zsh-completions**: Additional completion definitions
 
+### Portuguese Language Support
+- **XCompose**: Custom compose file for proper cedilla (ç/Ç) input
+- Works with US International keyboard layout
+- User-level configuration, no sudo required
+- Compatible with X11 applications
+
 ## Prerequisites
 
 Before installation, ensure you have the following:
@@ -203,6 +209,7 @@ dot-files/
 ├── install.sh              # Automated installation script
 ├── LICENSE                 # MIT License
 ├── README.md               # This file
+├── XCompose                # X11 compose configuration for cedilla support
 ├── zpreztorc               # Prezto configuration
 └── zshrc.template          # Zsh configuration template
 ```

@@ -99,6 +99,9 @@ if [ -d "$HOME/.zplug" ]; then
     create_symlink "$DOTFILES_DIR/zplug/plugins.zsh" "$HOME/.zplug/config/plugins.zsh"
 fi
 
+# XCompose for cedilla support
+create_symlink "$DOTFILES_DIR/XCompose" "$HOME/.XCompose"
+
 # .zshrc file
 echo ""
 if [ -f "$HOME/.zshrc" ]; then
