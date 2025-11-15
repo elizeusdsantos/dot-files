@@ -15,6 +15,9 @@ fi
 # Source antidote
 source ~/.antidote/antidote.zsh
 
+# Initialize completion system (required before loading plugins that use compdef)
+autoload -Uz compinit && compinit
+
 # Initialize plugins from zsh_plugins.txt
 antidote load
 
