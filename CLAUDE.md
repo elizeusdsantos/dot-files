@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a personal dot-files repository for configuring Zsh, Neovim, and Hyper terminal on Linux. The repository uses **symlinks** to connect configuration files from the repository to their expected locations in the home directory, allowing version control of configurations while keeping them in their standard locations.
+This is a personal dot-files repository for configuring Zsh, Neovim, and Ghostty terminal on Linux. The repository uses **symlinks** to connect configuration files from the repository to their expected locations in the home directory, allowing version control of configurations while keeping them in their standard locations.
 
 ## Installation and Setup
 
@@ -43,7 +43,7 @@ If modifying the installer or testing specific configurations:
 ```bash
 ln -sf ~/code/dot-files/zsh_plugins.txt ~/.zsh_plugins.txt
 ln -sf ~/code/dot-files/gitconfig ~/.gitconfig
-ln -sf ~/code/dot-files/hyper.js ~/.hyper.js
+ln -sf ~/code/dot-files/ghostty/config ~/.config/ghostty/config
 ln -sf ~/code/dot-files/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ~/code/dot-files/XCompose ~/.XCompose
 ```
@@ -73,12 +73,11 @@ Antidote will automatically install and load plugins on shell startup.
 - **Search**: case-insensitive, incremental, with highlighting
 - **Completion**: bash-like tab completion (`wildmode=longest,list`)
 
-### Hyper Terminal (hyper.js)
-- **Font**: Victor Mono (line 16)
-- **Theme**: hyper-hypest with dark mode enabled
-- **Colors**: Magenta accents (cursor: `rgba(248,28,229,0.8)`, selection: `rgba(248,28,229,0.3)`)
-- Cursor shape: UNDERLINE, non-blinking
-- Font size: 12px
+### Ghostty Terminal (ghostty/config)
+- **Font**: Victor Mono, size 10
+- **Theme**: Darkside (dark theme with vibrant colors)
+- **Cursor**: Underline style
+- **Keybindings**: Custom shift+enter binding for line breaks
 
 ### Git Configuration (gitconfig)
 - **User info**: Name and email configured for commits
@@ -120,7 +119,7 @@ The repository includes an XCompose file for proper cedilla character input (ç/
 
 This is a **symlink-based configuration system**:
 1. Repository files remain in `~/code/dot-files/`
-2. Symlinks are created in standard config locations (`~/.zsh_plugins.txt`, `~/.hyper.js`, etc.)
+2. Symlinks are created in standard config locations (`~/.zsh_plugins.txt`, `~/.config/ghostty/config`, etc.)
 3. Changes to repository files immediately affect the active configuration
 4. Git tracks the actual config files, not the symlinks
 
@@ -141,5 +140,5 @@ This design allows:
 
 **Optional:**
 - Neovim (configured as git editor)
-- Hyper terminal
+- Ghostty terminal
 - Victor Mono font

@@ -1,34 +1,33 @@
 # Dot-files
 
-Personal configuration files for Zsh, Neovim, and Hyper terminal on Linux.
+Personal configuration files for Zsh, Neovim, and Ghostty terminal on Linux.
 
 ## What's Included
 
 This repository contains configurations for:
 
-- **Zsh** with [Prezto](https://github.com/sorin-ionescu/prezto) framework
-- **Zplug** plugin manager with useful plugins
+- **Zsh** with [Antidote](https://github.com/mattmc3/antidote) plugin manager
 - **Neovim** text editor setup
-- **Hyper** terminal emulator with custom theme
+- **Ghostty** terminal emulator with custom theme
+- **Git** configuration
+- **XCompose** for Portuguese language support
 
 ## Features
 
-### Shell (Zsh + Prezto)
-- Emacs key bindings
-- Cloud prompt theme with custom orange color
-- 10,000 command history
-- Syntax highlighting with safety warnings for dangerous commands
-- Safe operations (prompts before overwriting files)
+### Shell (Zsh + Antidote)
+- Fast, declarative plugin management with Antidote
+- Auto-installation of plugins on first launch
+- Zsh plugins for autosuggestions, completions, and auto-pairing
+- Clean and simple configuration
 - Git integration
-- History substring search
-- Directory navigation enhancements
+- History management
 
-### Terminal (Hyper)
-- FiraCode Nerd Font with ligatures enabled
-- Dark mode theme (hyper-hypest)
-- Custom color scheme with magenta accents
-- WebGL rendering for better performance
-- System clipboard integration
+### Terminal (Ghostty)
+- Victor Mono font, size 10
+- Darkside theme (dark theme with vibrant colors)
+- Underline cursor style
+- Custom keybindings for enhanced workflow
+- Fast, native performance
 
 ### Editor (Neovim)
 - Line numbers and syntax highlighting
@@ -39,10 +38,12 @@ This repository contains configurations for:
 - Current line highlighting
 - Bash-like tab completion
 
-### Plugins (Zplug)
-- **zsh-autopair**: Auto-pairing of brackets and quotes
+### Zsh Plugins (via Antidote)
+Plugins are defined in `zsh_plugins.txt` and auto-installed:
 - **zsh-autosuggestions**: Fish-like command suggestions
 - **zsh-completions**: Additional completion definitions
+- **zsh-autopair**: Auto-pairing of brackets and quotes
+- **Pure prompt**: Minimal, fast Zsh prompt
 
 ### Portuguese Language Support
 - **XCompose**: Custom compose file for proper cedilla (ç/Ç) input
@@ -64,14 +65,13 @@ Before installation, ensure you have the following:
   sudo apt install zsh
   ```
 
-- **Prezto**: Zsh configuration framework
+- **Git**: Version control
   ```bash
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-  ```
+  # Arch Linux
+  sudo pacman -S git
 
-- **Zplug**: Plugin manager (auto-installed by install.sh if missing)
-  ```bash
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  # Ubuntu/Debian
+  sudo apt install git
   ```
 
 ### Optional
@@ -84,11 +84,12 @@ Before installation, ensure you have the following:
   sudo apt install neovim
   ```
 
-- **Hyper**: Terminal emulator
-  - Download from [hyper.is](https://hyper.is/)
+- **Ghostty**: Modern terminal emulator
+  - Download from [ghostty.org](https://ghostty.org/)
+  - Arch Linux: Available in AUR
 
-- **FiraCode Nerd Font**: Font with programming ligatures and icons
-  - Download from [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+- **Victor Mono Font**: Programming font with ligatures
+  - Download from [rubjo.github.io/victor-mono](https://rubjo.github.io/victor-mono/)
 
 ## Installation
 
@@ -96,7 +97,7 @@ Before installation, ensure you have the following:
 
 1. Clone this repository:
    ```bash
-   cd ~/code  # or your preferred location
+   cd ~/Code  # or your preferred location
    git clone https://github.com/elizeusdsantos/dot-files.git
    cd dot-files
    ```
@@ -105,6 +106,12 @@ Before installation, ensure you have the following:
    ```bash
    ./install.sh
    ```
+
+   The script will:
+   - Check for required dependencies
+   - Create timestamped backups of existing config files
+   - Create symlinks to your home directory
+   - Set up Zsh configuration
 
 3. Change your default shell to Zsh (if not already):
    ```bash
@@ -116,41 +123,42 @@ Before installation, ensure you have the following:
    source ~/.zshrc
    ```
 
-5. Install zplug plugins:
-   ```bash
-   zplug install
-   ```
+5. Antidote and plugins will auto-install on first Zsh launch!
 
 ### Manual Installation
 
 If you prefer to set up manually:
 
-1. **Prezto configuration:**
+1. **Zsh configuration:**
    ```bash
-   ln -sf ~/code/dot-files/zpreztorc ~/.zpreztorc
+   cp ~/Code/dot-files/zshrc.template ~/.zshrc
    ```
 
-2. **Zsh configuration:**
+2. **Antidote plugins:**
    ```bash
-   cp ~/code/dot-files/zshrc.template ~/.zshrc
-   # Edit ~/.zshrc and customize as needed
+   ln -sf ~/Code/dot-files/zsh_plugins.txt ~/.zsh_plugins.txt
    ```
 
-3. **Neovim configuration:**
+3. **Git configuration:**
+   ```bash
+   ln -sf ~/Code/dot-files/gitconfig ~/.gitconfig
+   ```
+
+4. **Ghostty configuration:**
+   ```bash
+   mkdir -p ~/.config/ghostty
+   ln -sf ~/Code/dot-files/ghostty/config ~/.config/ghostty/config
+   ```
+
+5. **Neovim configuration:**
    ```bash
    mkdir -p ~/.config/nvim
-   ln -sf ~/code/dot-files/nvim/init.vim ~/.config/nvim/init.vim
+   ln -sf ~/Code/dot-files/nvim/init.vim ~/.config/nvim/init.vim
    ```
 
-4. **Hyper configuration:**
+6. **XCompose (cedilla support):**
    ```bash
-   ln -sf ~/code/dot-files/hyper.js ~/.hyper.js
-   ```
-
-5. **Zplug plugins:**
-   ```bash
-   mkdir -p ~/.zplug/config
-   ln -sf ~/code/dot-files/zplug/plugins.zsh ~/.zplug/config/plugins.zsh
+   ln -sf ~/Code/dot-files/XCompose ~/.XCompose
    ```
 
 ## Customization
@@ -170,29 +178,34 @@ mcd() {
 }
 ```
 
-### Changing the Prompt Color
+### Adding More Zsh Plugins
 
-Edit `zpreztorc` line 150:
+Edit `zsh_plugins.txt` in this repository:
 ```bash
-zstyle ':prezto:module:prompt' theme 'cloud' '>' '#FFA500' 'blue'
-#                                              ^    ^         ^
-#                                              |    |         └─ root user color
-#                                              |    └─────────── normal user color (hex)
-#                                              └──────────────── prompt symbol
+# Add a new plugin (GitHub repo format)
+echo "username/repo-name" >> ~/Code/dot-files/zsh_plugins.txt
 ```
 
-### Adding More Zplug Plugins
-
-Edit `zplug/plugins.zsh` and add your plugins:
+Then reload your shell:
 ```bash
-zplug "author/plugin-name"
+source ~/.zshrc
 ```
 
-Then run:
+Antidote will automatically install the new plugin.
+
+### Changing Ghostty Theme
+
+Edit `ghostty/config` and change the theme line:
 ```bash
-zplug install
-zplug load
+theme = <theme-name>
 ```
+
+List available themes:
+```bash
+ghostty +list-themes
+```
+
+Then reload Ghostty config with `Ctrl+Shift+Comma` or restart Ghostty.
 
 ## File Structure
 
@@ -200,54 +213,65 @@ zplug load
 dot-files/
 ├── .claude/                 # Claude Code configuration
 ├── .git/                    # Git repository data
+├── ghostty/
+│   └── config              # Ghostty terminal configuration
 ├── nvim/
 │   └── init.vim            # Neovim configuration
-├── zplug/
-│   └── plugins.zsh         # Zplug plugin definitions
 ├── .gitignore              # Git ignore patterns
-├── hyper.js                # Hyper terminal configuration
+├── cleanup.sh              # Script to remove backup files
+├── CLAUDE.md               # Claude Code instructions
+├── gitconfig               # Git configuration
+├── hyper.js                # Legacy Hyper config (deprecated)
 ├── install.sh              # Automated installation script
 ├── LICENSE                 # MIT License
 ├── README.md               # This file
 ├── XCompose                # X11 compose configuration for cedilla support
-├── zpreztorc               # Prezto configuration
+├── zpreztorc               # Legacy Prezto config (deprecated)
+├── zsh_plugins.txt         # Antidote plugin list
 └── zshrc.template          # Zsh configuration template
 ```
 
 ## Troubleshooting
 
-### Prezto not loading
+### Antidote not loading
 
-Make sure Prezto is installed and sourced in your `~/.zshrc`:
+Make sure Antidote is sourced in your `~/.zshrc`:
 ```bash
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# Load antidote
+source ~/.antidote/antidote.zsh
+
+# Initialize plugins
+antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 ```
 
-### Zplug plugins not working
+If Antidote isn't installed, it will auto-install on first Zsh launch.
 
-1. Ensure zplug is installed: `test -d ~/.zplug && echo "Installed" || echo "Not installed"`
-2. Install plugins: `zplug install`
-3. Check if plugins are loaded: `zplug list`
+### Zsh plugins not working
 
-### Hyper not using FiraCode font
+1. Check if plugins file exists: `ls -la ~/.zsh_plugins.txt`
+2. Reload shell: `source ~/.zshrc`
+3. Check Antidote status: `antidote list`
 
-1. Ensure FiraCode Nerd Font is installed
-2. Check font name: `fc-list | grep -i fira`
-3. Update `hyper.js` line 16 with the correct font name
+### Ghostty theme not applying
+
+1. Verify config is symlinked: `ls -la ~/.config/ghostty/config`
+2. Reload config: Press `Ctrl+Shift+Comma` in Ghostty
+3. Or restart Ghostty completely
+4. Check theme name is correct: `ghostty +list-themes`
 
 ### Neovim configuration not loading
 
 1. Check file location: `ls -la ~/.config/nvim/init.vim`
 2. Check for syntax errors: `nvim --noplugin -c 'source ~/.config/nvim/init.vim' -c 'q'`
 
-## Backup
+## Backup & Cleanup
+
+### Automatic Backups
 
 The installation script automatically creates backups of existing files:
 ```
-~/.zpreztorc.backup.YYYYMMDD_HHMMSS
-~/.zshrc.backup.YYYYMMDD_HHMMSS
+~/.zshrc.backup.20251115_113045
+~/.gitconfig.backup.20251115_113045
 # etc.
 ```
 
@@ -271,7 +295,7 @@ To remove the symlinks and restore backups:
 
 ```bash
 # Remove symlinks
-rm ~/.zpreztorc ~/.hyper.js ~/.config/nvim/init.vim
+rm ~/.zsh_plugins.txt ~/.gitconfig ~/.config/ghostty/config ~/.config/nvim/init.vim ~/.XCompose
 
 # Restore from backup (find the latest backup)
 ls -la ~/*.backup.*
@@ -289,8 +313,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
-- [Prezto](https://github.com/sorin-ionescu/prezto) - Zsh configuration framework
-- [Zplug](https://github.com/zplug/zplug) - Plugin manager for Zsh
+- [Antidote](https://github.com/mattmc3/antidote) - Fast Zsh plugin manager
 - [Neovim](https://neovim.io/) - Hyperextensible Vim-based text editor
-- [Hyper](https://hyper.is/) - Electron-based terminal emulator
-- [FiraCode](https://github.com/tonsky/FiraCode) - Monospaced font with programming ligatures
+- [Ghostty](https://ghostty.org/) - Fast, native terminal emulator
+- [Victor Mono](https://rubjo.github.io/victor-mono/) - Programming font with cursive italics
+- [Pure](https://github.com/sindresorhus/pure) - Minimal Zsh prompt
