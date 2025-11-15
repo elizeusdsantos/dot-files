@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - zsh-autosuggestions plugin for Fish-like autosuggestions based on history
 - ohmyzsh git plugin for Git aliases and helper functions
 
+### Fixed
+- Added compinit initialization before loading Antidote plugins to fix "command not found: compdef" error
+
 ### Changed
 - Updated README.md to reflect current tech stack (Ghostty + Antidote)
 - Updated CLAUDE.md documentation for Ghostty terminal configuration
