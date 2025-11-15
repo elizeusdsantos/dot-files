@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added compinit initialization before loading Antidote plugins to fix "command not found: compdef" error
 - Fixed robbyrussell theme by loading oh-my-zsh git library to provide git_prompt_info function
 - Fixed _omz_register_handler error by loading oh-my-zsh async_prompt library
+- Enabled prompt substitution (PROMPT_SUBST) to properly expand git_prompt_info in robbyrussell theme
 
 ### Changed
 - Updated README.md to reflect current tech stack (Ghostty + Antidote)

@@ -53,19 +53,33 @@ ln -sf ~/code/dot-files/XCompose ~/.XCompose
 ### Zsh Configuration (zshrc.template)
 - Auto-clones Antidote plugin manager if not present
 - Sources Antidote from `~/.antidote/antidote.zsh`
+- Initializes completion system with `compinit` (required before loading plugins)
+- Enables prompt substitution with `setopt PROMPT_SUBST` (required for themes with command substitution)
 - Loads plugins from `~/.zsh_plugins.txt` (symlinked to `~/code/dot-files/zsh_plugins.txt`)
 - User customizations should be added at the bottom of `~/.zshrc`
 
 ### Antidote Plugins (zsh_plugins.txt)
-Add plugins to this file using GitHub repository format:
+Current plugins configured:
 ```
-# Examples:
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-completions
-hlissner/zsh-autopair
-sindresorhus/pure
+zsh-users/zsh-syntax-highlighting          # Real-time syntax highlighting
+zsh-users/zsh-autosuggestions              # Fish-like autosuggestions
+ohmyzsh/ohmyzsh path:lib/async_prompt.zsh  # Oh-My-Zsh async prompt support
+ohmyzsh/ohmyzsh path:lib/git.zsh           # Oh-My-Zsh git helper functions
+ohmyzsh/ohmyzsh path:plugins/git           # Oh-My-Zsh git aliases
+ohmyzsh/ohmyzsh path:themes/robbyrussell.zsh-theme  # Robbyrussell prompt theme
 ```
-Antidote will automatically install and load plugins on shell startup.
+
+To add more plugins, edit `zsh_plugins.txt` and add GitHub repo paths:
+```bash
+echo "owner/repo-name" >> ~/code/dot-files/zsh_plugins.txt
+source ~/.zshrc  # Reload to install new plugins
+```
+
+**Important**: When loading oh-my-zsh themes or plugins:
+- Load required libraries BEFORE the theme/plugin that depends on them
+- `async_prompt.zsh` must be loaded before `git.zsh`
+- `git.zsh` must be loaded before themes using `git_prompt_info`
+- Always enable `setopt PROMPT_SUBST` before loading themes with command substitution
 
 ### Neovim Configuration (nvim/init.vim)
 - **Indentation**: 2 spaces (expandtab, tabstop=2, shiftwidth=2)
