@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- zsh-syntax-highlighting plugin for real-time command syntax highlighting
+- zsh-autosuggestions plugin for Fish-like autosuggestions based on history
+- ohmyzsh git plugin for Git aliases and helper functions
+
 ### Changed
 - Updated README.md to reflect current tech stack (Ghostty + Antidote)
 - Updated CLAUDE.md documentation for Ghostty terminal configuration
