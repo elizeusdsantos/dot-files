@@ -54,16 +54,8 @@ if ! command -v nvim &> /dev/null; then
     echo -e "${YELLOW}!${NC} Neovim is not installed (optional)"
 fi
 
-if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
-    echo -e "${RED}✗${NC} Prezto is not installed"
-    echo -e "  Install with: git clone --recursive https://github.com/sorin-ionescu/prezto.git \"\${ZDOTDIR:-\$HOME}/.zprezto\""
-    MISSING_DEPS=1
-fi
-
-if [ ! -d "$HOME/.zplug" ]; then
-    echo -e "${YELLOW}!${NC} Zplug is not installed (will be installed)"
-    echo -e "  Installing zplug..."
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+if [ ! -d "$HOME/.antidote" ]; then
+    echo -e "${YELLOW}!${NC} Antidote is not installed (will be installed during first zsh launch)"
 fi
 
 if [ $MISSING_DEPS -eq 1 ]; then
@@ -76,8 +68,8 @@ echo -e "${GREEN}All critical prerequisites met!${NC}\n"
 # Install configurations
 echo -e "${BLUE}Installing configuration files...${NC}"
 
-# Zsh configuration
-create_symlink "$DOTFILES_DIR/zpreztorc" "$HOME/.zpreztorc"
+# Zsh plugins configuration
+create_symlink "$DOTFILES_DIR/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 
 # Git configuration
 create_symlink "$DOTFILES_DIR/gitconfig" "$HOME/.gitconfig"
@@ -94,12 +86,6 @@ if command -v nvim &> /dev/null; then
     create_symlink "$DOTFILES_DIR/nvim/init.vim" "$HOME/.config/nvim/init.vim"
 else
     echo -e "${YELLOW}!${NC} Neovim not found, skipping nvim/init.vim"
-fi
-
-# Zplug plugins configuration
-if [ -d "$HOME/.zplug" ]; then
-    mkdir -p "$HOME/.zplug/config"
-    create_symlink "$DOTFILES_DIR/zplug/plugins.zsh" "$HOME/.zplug/config/plugins.zsh"
 fi
 
 # XCompose for cedilla support
@@ -123,8 +109,8 @@ echo -e "${GREEN}=== Installation Complete! ===${NC}"
 echo ""
 echo -e "Next steps:"
 echo -e "  1. ${BLUE}Review and customize ~/.zshrc if needed${NC}"
-echo -e "  2. ${BLUE}Restart your terminal or run: source ~/.zshrc${NC}"
-echo -e "  3. ${BLUE}Install zplug plugins: zplug install${NC}"
+echo -e "  2. ${BLUE}Add plugins to ~/code/dot-files/zsh_plugins.txt${NC}"
+echo -e "  3. ${BLUE}Restart your terminal or run: source ~/.zshrc${NC}"
 echo ""
 echo -e "Optional installations:"
 echo -e "  • Victor Mono Font: https://rubjo.github.io/victor-mono/"
@@ -132,4 +118,5 @@ echo -e "  • Hyper Terminal: https://hyper.is/"
 echo ""
 echo -e "Configuration files have been symlinked. Any changes you make in"
 echo -e "this repository will automatically be reflected in your environment."
+echo -e "Antidote will automatically install plugins on first launch."
 echo ""

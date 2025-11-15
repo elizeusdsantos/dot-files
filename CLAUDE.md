@@ -14,47 +14,46 @@ This is a personal dot-files repository for configuring Zsh, Neovim, and Hyper t
 ```
 
 The installation script:
-- Creates backups of existing files with timestamps (e.g., `.zpreztorc.backup.YYYYMMDD_HHMMSS`)
+- Creates backups of existing files with timestamps (e.g., `.gitconfig.backup.YYYYMMDD_HHMMSS`)
 - Creates symlinks from `$HOME` to files in this repository
-- Checks for required dependencies (Zsh, Prezto)
-- Installs Zplug if missing
+- Checks for required dependencies (Zsh)
 - Handles `.zshrc` carefully (prompts user if exists, otherwise copies from template)
+- Symlinks `zsh_plugins.txt` to `~/.zsh_plugins.txt` for Antidote plugin management
 
 ### Post-Installation
 ```bash
 source ~/.zshrc
-zplug install
+# Antidote will automatically clone itself and install plugins on first launch
 ```
 
 ### Manual Symlink Creation
 If modifying the installer or testing specific configurations:
 ```bash
-ln -sf ~/code/dot-files/zpreztorc ~/.zpreztorc
+ln -sf ~/code/dot-files/zsh_plugins.txt ~/.zsh_plugins.txt
 ln -sf ~/code/dot-files/gitconfig ~/.gitconfig
 ln -sf ~/code/dot-files/hyper.js ~/.hyper.js
 ln -sf ~/code/dot-files/nvim/init.vim ~/.config/nvim/init.vim
-ln -sf ~/code/dot-files/zplug/plugins.zsh ~/.zplug/config/plugins.zsh
 ln -sf ~/code/dot-files/XCompose ~/.XCompose
 ```
 
 ## Key Configuration Details
 
-### Prezto Configuration (zpreztorc)
-- **Prompt theme**: Cloud theme with custom orange color (`#FFA500`) configured on line 150
-- **Modules loaded** (in order): environment, terminal, editor, history, directory, spectrum, utility, completion, history-substring-search, prompt, syntax-highlighting, git
-- Module order matters for Prezto; don't reorder without reason
-
 ### Zsh Configuration (zshrc.template)
-- Sources Prezto from `~/.zprezto/init.zsh`
-- Sources Zplug from `~/.zplug/init.zsh`
-- Loads plugin configuration from `~/code/dot-files/zplug/plugins.zsh`
+- Auto-clones Antidote plugin manager if not present
+- Sources Antidote from `~/.antidote/antidote.zsh`
+- Loads plugins from `~/.zsh_plugins.txt` (symlinked to `~/code/dot-files/zsh_plugins.txt`)
 - User customizations should be added at the bottom of `~/.zshrc`
 
-### Zplug Plugins (zplug/plugins.zsh)
-Current plugins:
-- `hlissner/zsh-autopair` (defer:2) - auto-pairing brackets/quotes
-- `zsh-users/zsh-autosuggestions` - fish-like command suggestions
-- `zsh-users/zsh-completions` - additional completions
+### Antidote Plugins (zsh_plugins.txt)
+Add plugins to this file using GitHub repository format:
+```
+# Examples:
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+hlissner/zsh-autopair
+sindresorhus/pure
+```
+Antidote will automatically install and load plugins on shell startup.
 
 ### Neovim Configuration (nvim/init.vim)
 - **Indentation**: 2 spaces (expandtab, tabstop=2, shiftwidth=2)
@@ -83,19 +82,16 @@ Current plugins:
 - Use color codes: GREEN for success, YELLOW for warnings, RED for errors, BLUE for info
 - Exit with status 1 if critical dependencies are missing
 
-### When Adding Zplug Plugins
-Add to `zplug/plugins.zsh`, then run:
+### When Adding Antidote Plugins
+Add plugin repository to `zsh_plugins.txt`:
 ```bash
-zplug install
-zplug load
-```
+# Add a line with the GitHub repository path
+echo "owner/repo-name" >> ~/code/dot-files/zsh_plugins.txt
 
-### When Modifying Prompt Color
-Edit `zpreztorc` line 150:
-```bash
-zstyle ':prezto:module:prompt' theme 'cloud' '>' '#FFA500' 'blue'
+# Reload shell or run:
+source ~/.zshrc
 ```
-Format: `theme-name symbol user-color root-color`
+Antidote will automatically install new plugins on next shell startup.
 
 ## Special Configurations
 
@@ -112,7 +108,7 @@ The repository includes an XCompose file for proper cedilla character input (ç/
 
 This is a **symlink-based configuration system**:
 1. Repository files remain in `~/code/dot-files/`
-2. Symlinks are created in standard config locations (`~/.zpreztorc`, `~/.hyper.js`, etc.)
+2. Symlinks are created in standard config locations (`~/.zsh_plugins.txt`, `~/.hyper.js`, etc.)
 3. Changes to repository files immediately affect the active configuration
 4. Git tracks the actual config files, not the symlinks
 
@@ -126,11 +122,12 @@ This design allows:
 
 **Required:**
 - Zsh
-- Prezto (installed at `~/.zprezto`)
 - Git
+
+**Auto-installed:**
+- Antidote (auto-cloned to `~/.antidote` on first shell launch)
 
 **Optional:**
 - Neovim (configured as git editor)
 - Hyper terminal
 - Victor Mono font
-- Zplug (auto-installed by `install.sh`)

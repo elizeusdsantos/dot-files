@@ -5,36 +5,18 @@
 #
 
 #
-# Prezto
+# Antidote
 #
-# Source Prezto for Zsh configuration framework
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# Clone antidote if necessary
+if [[ ! -d ~/.antidote ]]; then
+  git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
 fi
 
-#
-# Zplug
-#
-# Initialize zplug plugin manager
-if [[ -d ~/.zplug ]]; then
-  source ~/.zplug/init.zsh
+# Source antidote
+source ~/.antidote/antidote.zsh
 
-  # Load plugin configuration
-  if [[ -f ~/code/dot-files/zplug/plugins.zsh ]]; then
-    source ~/code/dot-files/zplug/plugins.zsh
-  fi
-
-  # Install plugins if there are plugins that have not been installed
-  if ! zplug check --verbose; then
-    printf "Install zplug plugins? [y/N]: "
-    if read -q; then
-      echo; zplug install
-    fi
-  fi
-
-  # Load plugins
-  zplug load
-fi
+# Initialize plugins from zsh_plugins.txt
+antidote load
 
 #
 # User Configuration
