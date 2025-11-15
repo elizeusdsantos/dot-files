@@ -74,11 +74,18 @@ create_symlink "$DOTFILES_DIR/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 # Git configuration
 create_symlink "$DOTFILES_DIR/gitconfig" "$HOME/.gitconfig"
 
-# Hyper terminal configuration
-if command -v hyper &> /dev/null; then
-    create_symlink "$DOTFILES_DIR/hyper.js" "$HOME/.hyper.js"
+# Hyper terminal configuration (DEPRECATED - using Ghostty now)
+# if command -v hyper &> /dev/null; then
+#     create_symlink "$DOTFILES_DIR/hyper.js" "$HOME/.hyper.js"
+# else
+#     echo -e "${YELLOW}!${NC} Hyper terminal not found, skipping hyper.js"
+# fi
+
+# Ghostty terminal configuration
+if command -v ghostty &> /dev/null; then
+    create_symlink "$DOTFILES_DIR/ghostty/config" "$HOME/.config/ghostty/config"
 else
-    echo -e "${YELLOW}!${NC} Hyper terminal not found, skipping hyper.js"
+    echo -e "${YELLOW}!${NC} Ghostty terminal not found, skipping ghostty config"
 fi
 
 # Neovim configuration
@@ -114,7 +121,7 @@ echo -e "  3. ${BLUE}Restart your terminal or run: source ~/.zshrc${NC}"
 echo ""
 echo -e "Optional installations:"
 echo -e "  • Victor Mono Font: https://rubjo.github.io/victor-mono/"
-echo -e "  • Hyper Terminal: https://hyper.is/"
+echo -e "  • Ghostty Terminal: https://ghostty.org/"
 echo ""
 echo -e "Configuration files have been symlinked. Any changes you make in"
 echo -e "this repository will automatically be reflected in your environment."
