@@ -1,4 +1,5 @@
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
+ohmyzsh/ohmyzsh path:lib/git.zsh
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:themes/robbyrussell.zsh-theme
