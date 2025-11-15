@@ -26,6 +26,18 @@ source ~/.zshrc
 # Antidote will automatically clone itself and install plugins on first launch
 ```
 
+### Cleanup Backup Files
+Running `install.sh` multiple times creates timestamped backups. To remove them:
+```bash
+./cleanup.sh
+```
+
+The cleanup script:
+- Finds all backup files matching `*.backup.YYYYMMDD_HHMMSS` pattern
+- Lists files with sizes for review
+- Asks for confirmation before deletion
+- Safely removes all backup files from `$HOME`
+
 ### Manual Symlink Creation
 If modifying the installer or testing specific configurations:
 ```bash

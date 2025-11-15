@@ -251,6 +251,20 @@ The installation script automatically creates backups of existing files:
 # etc.
 ```
 
+### Cleaning Up Backup Files
+
+If you run `install.sh` multiple times, backup files will accumulate. To remove them all at once:
+
+```bash
+./cleanup.sh
+```
+
+The cleanup script will:
+- Find all backup files matching the `*.backup.YYYYMMDD_HHMMSS` pattern
+- Show you a list of files with their sizes
+- Ask for confirmation before deleting
+- Safely remove all backup files from your home directory
+
 ## Uninstallation
 
 To remove the symlinks and restore backups:
