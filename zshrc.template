@@ -18,6 +18,9 @@ source ~/.antidote/antidote.zsh
 # Initialize completion system (required before loading plugins that use compdef)
 autoload -Uz compinit && compinit
 
+# Enable prompt substitution (required for themes using command substitution)
+setopt PROMPT_SUBST
+
 # Initialize plugins from zsh_plugins.txt
 antidote load
 
