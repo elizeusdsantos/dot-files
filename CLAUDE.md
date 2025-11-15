@@ -118,6 +118,12 @@ source ~/.zshrc
 ```
 Antidote will automatically install new plugins on next shell startup.
 
+### Git Workflow
+- When making changes, Claude should create commits as requested
+- **IMPORTANT**: User handles `git push` themselves - never push to remote unless explicitly requested
+- Follow standard commit message conventions
+- Include context in commit messages about what changed and why
+
 ## Special Configurations
 
 ### XCompose (Cedilla Support)

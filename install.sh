@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 #
 # Dot-files Installation Script
@@ -17,7 +17,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Get the directory where this script is located
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="${0:A:h}"
 
 echo -e "${BLUE}=== Dot-files Installation ===${NC}"
 echo -e "Installing from: ${DOTFILES_DIR}\n"

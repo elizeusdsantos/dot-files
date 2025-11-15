@@ -22,6 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Updated README.md to reflect current tech stack (Ghostty + Antidote)
 - Updated CLAUDE.md documentation for Ghostty terminal configuration
+- Migrated all shell scripts to zsh (install.sh, cleanup.sh) for consistency with repository focus
+- Changed script directory detection from bash-specific `${BASH_SOURCE[0]}` to zsh-native `${0:A:h}` in install.sh
+
+### Removed
+- kcts.sh - Personal Kubernetes context switching script (repository-specific, not general-purpose)
 
 ## [2.0.0] - 2025-11-15
 
